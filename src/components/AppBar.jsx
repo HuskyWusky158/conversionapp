@@ -43,6 +43,21 @@ return (
         >
             Help
         </Typography>
+        <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/Feedback"
+            sx={{
+            mr: 2,
+            color: 'inherit',
+            textDecoration: 'none',
+            fontSize: 'large',
+            }}
+        >
+            Feedback
+        </Typography>
+
         </Toolbar>
     </Container>
     </AppBar>

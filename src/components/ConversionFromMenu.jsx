@@ -5,11 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function ConversionFromMenu() {
-  const [From, setAge] = React.useState('');
-
+export default function ConversionFromMenu(props) {
   const handleChange = (event) => {
-    setAge(event.target.value);
+    props.setFrom(event.target.value);
   };
 
   return (
@@ -19,15 +17,14 @@ export default function ConversionFromMenu() {
         <Select
           labelId="From"
           id="demo-simple-select"
-          value={From}
+          value={props.from}
           label="From"
           onChange={handleChange}
           style={{ backgroundColor: '#3f51b5', color: 'white' }}
         >
-          <MenuItem value={10}>Cups</MenuItem>
-          <MenuItem value={20}>Ounces</MenuItem>
-          <MenuItem value={30}>Tablespoons</MenuItem>
-          <MenuItem value={30}>Grams</MenuItem>
+          <MenuItem value={"Cups"}>Cups</MenuItem>
+          <MenuItem value={"Ounces"}>Ounces</MenuItem>
+          <MenuItem value={"Tablespoons"}>Tablespoons</MenuItem>
         </Select>
       </FormControl>
     </Box>
