@@ -47,7 +47,7 @@ return (
             variant="h6"
             noWrap
             component="a"
-            href="/Feedback"
+            href="/feedback"
             sx={{
             mr: 2,
             color: 'inherit',

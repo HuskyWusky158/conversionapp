@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Help from './Help';
-import Feedback from './Feedback'
+import Feedback from './Feedback';
 
 
 const App = () => {
@@ -11,8 +11,8 @@ const App = () => {
       <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Help" element={<Help />} />
-        <Route path="/Feedback" element={<Feedback />}/>
+        <Route path="/help" element={<Help />} />
+        <Route path="/feedback" element={<Feedback />}/>
       </Routes>
     </Router>
     </>
