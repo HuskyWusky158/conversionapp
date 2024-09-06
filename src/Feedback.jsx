@@ -51,7 +51,9 @@ function Feedback() {
 
     const handleSendFeedback = (event) => {
         event.preventDefault();
-        sendEmail();
+        // sendEmail();
+        alert('I got your feedback. Thanks!');
+        clearTextField();
 
     }
 

@@ -15,50 +15,43 @@ function Home() {
   const [from, setFrom] = useState("")
   const [to, setTo] = useState("")
   const [result, setResult] = useState("")
-  const [quote, setQuote] = useState("")
 
-  useEffect(()=>{
-    getQuote()
-  }, [])
 
   const clearTextField = () => {
     setValue('');
     setResult('');
   };
 
-  const submitForm = () => {
+  const getConversion = () => {
 
-    const postData = {
-      value: value,
-      to: to,
-      from: from,
-    };
+    let returnValue = value
 
-    console.log(postData)
-    //https://email-server-smoky.vercel.app/emailServer
-    
-    axios.post('http://localhost:3010/conversion', postData)
-      .then(response => {
-        console.log('Result:', response.data.result);
-        setResult(response.data.result)
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+    if (from == "Cups" && to == "Ounces") {
+      returnValue = value * 8
+    }
+
+    if (from == "Ounces" && to == "Cups") {
+      returnValue = value / 8
+    }
+
+    if (from == "Tablespoons" && to == "Ounces") {
+      returnValue = value * 0.5
+    }
+
+    if (from == "Ounces" && to == "Tablespoons") {
+      returnValue = value * 2
+    }
+
+    if (from == "Tablespoons" && to == "Cups") {
+      returnValue = value / 16
+    }
+
+    if (from == "Cups" && to == "Tablespoons") {
+      returnValue = value * 16
+    }
+
+    setResult(returnValue)
   }
-
-  const getQuote = (event) => {
-    // event.preventDefault();
-    axios.get('http://localhost:5002/get_quote')
-      .then(response => {
-        console.log('Quote:', response.data.result);
-        setQuote(response.data.quote)
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-
 
   return (
     <div className="App">
@@ -92,13 +85,13 @@ function Home() {
             }}
           />
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-          Result: {result}
+            Result: {result}
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
             <Button
               variant="contained"
               style={{ backgroundColor: '#3f51b5', color: 'white' }}
-              onClick={submitForm}
+              onClick={getConversion}
             >
               submit
             </Button>
@@ -116,9 +109,6 @@ function Home() {
           </Alert>
         </Box>
       </Box>
-
-      <Box>{quote}</Box>
-
     </div>
   )
 }
